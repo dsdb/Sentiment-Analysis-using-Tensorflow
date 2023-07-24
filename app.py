@@ -4,19 +4,25 @@ import tensorflow as tf
 from transformers import AutoTokenizer, TFAutoModelForSequenceClassification
 
 # Load the pre-trained BERT model and tokenizer
+# Experiment:1
 #{
 #model_name = 'bert-base-cased'
 #tokenizer = BertTokenizer.from_pretrained(model_name)
 #model = TFBertForSequenceClassification.from_pretrained(model_name)
 #}
-model_name = 'distilbert-base-uncased'
-
+# Experiement:2
 #{ Fine-tuned model size execeds to allowed limit
 # Load tokenizer
 #tokenizer = AutoTokenizer.from_pretrained("./Models/sentiment_learning_tensorflow/")
 # Load model
 #model = TFAutoModelForSequenceClassification.from_pretrained('./Models/sentiment_learning_tensorflow/')
 #}
+
+#Experiment:3
+#model_name = 'distilbert-base-uncased'
+
+#Experiment:4
+model_name = 'distilbert-base-uncased-finetuned-sst-2-english'
 
 # Tokenizer 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -27,7 +33,8 @@ def predict_sentiment(text):
     inputs = tokenizer.encode_plus(
         text,
         add_special_tokens=True,
-        max_length=128,
+        #max_length=128,
+        max_length=512,
         return_tensors='tf',
         padding='max_length',
         truncation=True,
