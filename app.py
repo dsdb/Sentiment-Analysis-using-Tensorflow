@@ -1,6 +1,6 @@
 import streamlit as st
 import tensorflow as tf
-import torch
+# import torch
 #from transformers import BertTokenizer, TFBertForSequenceClassification
 from transformers import pipeline
 from transformers import AutoTokenizer, TFAutoModelForSequenceClassification
